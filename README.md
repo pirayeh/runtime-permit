@@ -75,3 +75,7 @@ private final PermissionPacket packet = new PermissionPacket() {
   }
 ```
 
+# Version
+
+* 0.1.1 :
+ bug fix to perform action after onSaveInstanceState
