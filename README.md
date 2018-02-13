@@ -45,7 +45,7 @@ private final PermissionPacket packet = new PermissionPacket() {
         @Override
         public void onDenied(PermissionPacket packet) {
             mTextMessage.setTextColor(Color.RED);
-            mTextMessage.setText("access is denied. Please allow to all requirement permissions.");
+            mTextMessage.setText("access is denied. Please accept to allow all requirement permissions.");
         }
 
         @Override
