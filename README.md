@@ -24,4 +24,54 @@ dependencies {
 }
 ```
 
+# Example:
+
+* AndroidManifest:
+
+```
+<uses-permission android:name="android.permission.CAMERA" />
+```
+
+* create a PermissionPacket instance:
+
+```
+private final PermissionPacket packet = new PermissionPacket() {
+        @Override
+        public void onPermitted() {
+            mTextMessage.setTextColor(Color.GREEN);
+            mTextMessage.setText("successfully!");
+        }
+
+        @Override
+        public void onDenied(PermissionPacket packet) {
+            mTextMessage.setTextColor(Color.RED);
+            mTextMessage.setText("access is denied. Please allow to all requirement permissions.");
+        }
+
+        @Override
+        public Permission[] getPermissions() {
+            return new Permission[]{Permission.CAMERA};
+        }
+
+        @Override
+        public Activity getActivity() {
+            return MainActivity.this;
+        }
+    };
+```
+  
+  * request packet:
+  
+```
+  PermissionRequester.getInstance().request(packet);
+```
+ 
+ * override onRequestPermissionsResult method and check result:
+ 
+ ```
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+      PermissionRequester.getInstance().checkResult(grantResults); //check result of requested permissions with PermissionRequester.
+  }
+```
 
