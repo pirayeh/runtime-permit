@@ -1,5 +1,8 @@
 package ir.pirayeh1485.runtimepermit;
 
+import android.os.Handler;
+import android.support.v4.app.Fragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +27,14 @@ public class PermissionRequester {
         presenter = new PermissionPresenter();
         presenter.setOnPermissionListener(new PermissionPresenter.OnPermissionListener() {
             @Override
-            public void onPermitted(PermissionPacket packet) {
-                packet.onPermitted();
+            public void onPermitted(final PermissionPacket packet) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        packet.onPermitted();
+                    }
+                }, 100);
+
 
                 if (queue.size() > 0) {
                     queue.remove(0);
@@ -35,8 +44,13 @@ public class PermissionRequester {
             }
 
             @Override
-            public void onDenied(PermissionPacket packet) {
-                packet.onDenied(packet);
+            public void onDenied(final PermissionPacket packet) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        packet.onDenied(packet);
+                    }
+                }, 100);
 
                 if (queue.size() > 0) {
                     queue.remove(0);
