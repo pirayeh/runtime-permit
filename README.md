@@ -50,7 +50,7 @@ private final PermissionPacket packet = new PermissionPacket() {
 
         @Override
         public Permission[] getPermissions() {
-            return new Permission[]{Permission.CAMERA};
+            return new Permission[]{ir.pirayeh1485.runtimepermit.Permission.CAMERA};
         }
 
         @Override
