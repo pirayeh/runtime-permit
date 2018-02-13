@@ -20,7 +20,7 @@ allprojects {
 * step 2: Add the dependency to your module gradle 
 ```
 dependencies {
-    compile 'com.github.pirayeh:runtime-permit:0.1.0'
+    compile 'com.github.pirayeh:runtime-permit:0.1.1'
 }
 ```
 
